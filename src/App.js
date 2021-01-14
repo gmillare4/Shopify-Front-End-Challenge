@@ -8,6 +8,7 @@ export default class App extends Component {
     super();
     this.state = {
       searchParam: "",
+      searchResults: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
@@ -27,7 +28,8 @@ export default class App extends Component {
       `http://www.omdbapi.com/?s=${this.state.searchParam}&page=1&apikey=807abc94`
     )
       .then((res) => res.json())
-      .then((data) => console.log("Data", data));
+      .then((data) => this.setState({ searchResults: data.Search }))
+      .then(console.log("Search Results", this.state.searchResults));
   }
 
   handleChange = (event) => {
@@ -37,14 +39,14 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Something</h1>
+        <h1>The Shoppies</h1>
         <Nominations />
         <SearchBar
           search={this.search}
           searchparam={this.state.searchParam}
           handleChange={this.handleChange}
         />
-        <SearchResults />
+        <SearchResults searchResults={this.state.searchResults} />
       </div>
     );
   }
