@@ -7,6 +7,14 @@ export default class App extends Component {
   constructor() {
     super();
   }
+  //http://www.omdbapi.com/?i=tt3896198&apikey=807abc94
+  //http://www.omdbapi.com/?apikey=807abc94
+  componentDidMount() {
+    fetch("http://www.omdbapi.com/?i=tt3896198&apikey=807abc94")
+      .then((res) => res.json())
+      .then((data) => console.log("Data", data));
+  }
+
   render() {
     return (
       <div className="App">
