@@ -7,6 +7,9 @@ import {
   CardTitle,
   CardSubtitle,
   Button,
+  Form,
+  FormGroup,
+  Input,
 } from "reactstrap";
 
 const SearchBar = (props) => {
@@ -14,14 +17,16 @@ const SearchBar = (props) => {
     <Card className="card shadow p-3 mb-5 bg-white rounded">
       <CardBody>
         <h5>Movie Title</h5>
-        <form onSubmit={props.search}>
-          <input
-            type="text"
-            value={props.searchParam}
-            onChange={props.handleChange}
-          />
-          <button type="submit">Search</button>
-        </form>
+        <Form onSubmit={props.search}>
+          <FormGroup>
+            <Input
+              type="text"
+              value={props.searchParam}
+              onChange={props.handleChange}
+              placeholder="Search"
+            />
+          </FormGroup>
+        </Form>
       </CardBody>
     </Card>
   );
