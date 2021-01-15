@@ -8,7 +8,7 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
-//className="card shadow p-3 mb-5 bg-white rounded"
+
 const SearchResults = (props) => {
   return (
     <Card className="card shadow p-3 mb-5 bg-white rounded">

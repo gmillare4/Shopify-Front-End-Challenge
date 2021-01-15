@@ -93,12 +93,18 @@ export default class App extends Component {
   render() {
     let banner;
     if (this.state.banner) {
-      banner = <h4>Banner</h4>;
+      banner = (
+        <h4 className="banner center">
+          You've successfully nominated 5 movies!
+        </h4>
+      );
+    } else {
+      banner = <h4 className="noBanner text center">No Banner</h4>;
     }
     return (
       <div className="App">
         {banner}
-        <h1>The Shoppies</h1>
+        <h1 className="center">The Shoppies</h1>
         <SearchBar
           search={this.search}
           searchParam={this.state.searchParam}

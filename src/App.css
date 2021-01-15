@@ -1,5 +1,24 @@
 .card {
-  margin-left: 5em;
-  margin-right: 5em;
-  margin-bottom: 1em;
+  margin-left: 2.5em;
+  margin-right: 2.5em;
+}
+
+body {
+  background-color: #fae3d9;
+}
+
+.center {
+  text-align: center;
+}
+
+.noBanner {
+  background-color: #fae3d9;
+}
+
+.noBanner.text {
+  color: #fae3d9;
+}
+
+.banner {
+  background-color: #bbded6;
 }
