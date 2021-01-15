@@ -8,29 +8,26 @@ import {
   CardSubtitle,
   Button,
 } from "reactstrap";
-
+//className="card shadow p-3 mb-5 bg-white rounded"
 const SearchResults = (props) => {
   return (
-    <div>
-      <Card body outline color="secondary">
-        <CardBody>
-          <CardTitle tag="h2">test card</CardTitle>
-          <h2>Results for "{props.resultsFor}"</h2>
-          <ul>
-            {props.searchResults.map((result, index) => {
-              return (
-                <li key={index}>
-                  {result.Title} ({result.Year}) {}
-                  <button value={result.imdbID} onClick={props.nominate}>
-                    Nominate
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </CardBody>
-      </Card>
-    </div>
+    <Card className="card shadow p-3 mb-5 bg-white rounded">
+      <CardBody>
+        <h5>Results for "{props.resultsFor}"</h5>
+        <ul>
+          {props.searchResults.map((result, index) => {
+            return (
+              <li key={index}>
+                {result.Title} ({result.Year}) {}
+                <button value={result.imdbID} onClick={props.nominate}>
+                  Nominate
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </CardBody>
+    </Card>
   );
 };
 export default SearchResults;

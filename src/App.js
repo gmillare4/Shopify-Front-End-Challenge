@@ -2,6 +2,20 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 import "./App.css";
 import { Nominations, SearchBar, SearchResults } from "./components";
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button,
+  Col,
+  Container,
+  Row,
+  CardDeck,
+  CardGroup,
+} from "reactstrap";
 
 export default class App extends Component {
   constructor() {
@@ -85,20 +99,23 @@ export default class App extends Component {
       <div className="App">
         {banner}
         <h1>The Shoppies</h1>
-        <Nominations
-          nominations={this.state.nominations}
-          remove={this.remove}
-        />
         <SearchBar
           search={this.search}
           searchParam={this.state.searchParam}
           handleChange={this.handleChange}
         />
-        <SearchResults
-          searchResults={this.state.searchResults}
-          nominate={this.nominate}
-          resultsFor={this.state.resultsFor}
-        />
+        <CardGroup>
+          <SearchResults
+            searchResults={this.state.searchResults}
+            nominate={this.nominate}
+            resultsFor={this.state.resultsFor}
+          />
+
+          <Nominations
+            nominations={this.state.nominations}
+            remove={this.remove}
+          />
+        </CardGroup>
       </div>
     );
   }

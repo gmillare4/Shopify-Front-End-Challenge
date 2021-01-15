@@ -1,22 +1,33 @@
 import React from "react";
-
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button,
+} from "reactstrap";
+//className="card shadow p-3 mb-5 bg-white rounded"
 const Nominations = (props) => {
   return (
-    <div>
-      <h2>Nominations</h2>
-      <ul>
-        {props.nominations.map((result, index) => {
-          return (
-            <li key={index}>
-              {result.Title} ({result.Year}) {}
-              <button value={result.imdbID} onClick={props.remove}>
-                Remove
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <Card className="card shadow p-3 mb-5 bg-white rounded">
+      <CardBody>
+        <h5>Nominations</h5>
+        <ul>
+          {props.nominations.map((result, index) => {
+            return (
+              <li key={index}>
+                {result.Title} ({result.Year}) {}
+                <button value={result.imdbID} onClick={props.remove}>
+                  Remove
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </CardBody>
+    </Card>
   );
 };
 export default Nominations;
