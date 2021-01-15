@@ -26,6 +26,7 @@ export default class App extends Component {
       nominations: [],
       banner: false,
       resultsFor: "",
+      apiError: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
@@ -38,8 +39,24 @@ export default class App extends Component {
     fetch(
       `http://www.omdbapi.com/?s=${this.state.searchParam}&page=1&apikey=807abc94`
     )
-      .then((res) => res.json())
-      .then((data) => this.setState({ searchResults: data.Search }));
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Something went wrong");
+        }
+      })
+      .then((res) => {
+        if (res.Response === "True") {
+          this.setState({ searchResults: res.Search });
+          console.log("res", res);
+        } else {
+          this.setState({ apiError: res.Error });
+          console.log(this.state.apiError);
+        }
+      })
+      .catch((err) => console.log("error", err));
+
     this.setState({ resultsFor: this.state.searchParam });
   }
 
