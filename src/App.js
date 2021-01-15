@@ -14,6 +14,7 @@ export default class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
     this.nominate = this.nominate.bind(this);
+    this.remove = this.remove.bind(this);
   }
   //http://www.omdbapi.com/?i=tt3896198&apikey=807abc94
   //http://www.omdbapi.com/?apikey=807abc94
@@ -42,7 +43,15 @@ export default class App extends Component {
         });
       }
     }
-    console.log("Nominations", this.state.nominations);
+  }
+
+  remove(event) {
+    let newNominations = this.state.nominations.filter(
+      (nomination) => nomination.imdbID !== event.target.value
+    );
+    this.setState({
+      nominations: newNominations,
+    });
   }
 
   handleChange = (event) => {
@@ -53,7 +62,10 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>The Shoppies</h1>
-        <Nominations nominations={this.state.nominations} />
+        <Nominations
+          nominations={this.state.nominations}
+          remove={this.remove}
+        />
         <SearchBar
           search={this.search}
           searchparam={this.state.searchParam}
