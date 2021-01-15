@@ -31,16 +31,29 @@ export default class App extends Component {
       `http://www.omdbapi.com/?s=${this.state.searchParam}&page=1&apikey=807abc94`
     )
       .then((res) => res.json())
-      .then((data) => this.setState({ searchResults: data.Search }))
-      .then(console.log("Search Results", this.state.searchResults));
+      .then((data) => this.setState({ searchResults: data.Search }));
   }
 
   nominate(event) {
-    for (let i = 0; i < this.state.searchResults.length; i++) {
-      if (this.state.searchResults[i].imdbID === event.target.value) {
-        this.setState({
-          nominations: [...this.state.nominations, this.state.searchResults[i]],
-        });
+    let canNominate = true;
+    for (let j = 0; j < this.state.nominations.length; j++) {
+      if (this.state.nominations[j].imdbID === event.target.value) {
+        canNominate = false;
+      }
+    }
+    if (this.state.nominations.length === 5) {
+      canNominate = false;
+    }
+    if (canNominate) {
+      for (let i = 0; i < this.state.searchResults.length; i++) {
+        if (this.state.searchResults[i].imdbID === event.target.value) {
+          this.setState({
+            nominations: [
+              ...this.state.nominations,
+              this.state.searchResults[i],
+            ],
+          });
+        }
       }
     }
   }
