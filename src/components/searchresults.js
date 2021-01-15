@@ -9,6 +9,9 @@ const SearchResults = (props) => {
           return (
             <li key={index}>
               {result.Title}, {result.Year}
+              <button value={result.imdbID} onClick={props.nominate}>
+                Nominate
+              </button>
             </li>
           );
         })}

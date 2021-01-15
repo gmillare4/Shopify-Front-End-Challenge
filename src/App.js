@@ -9,9 +9,11 @@ export default class App extends Component {
     this.state = {
       searchParam: "",
       searchResults: [],
+      nominations: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
+    this.nominate = this.nominate.bind(this);
   }
   //http://www.omdbapi.com/?i=tt3896198&apikey=807abc94
   //http://www.omdbapi.com/?apikey=807abc94
@@ -32,6 +34,17 @@ export default class App extends Component {
       .then(console.log("Search Results", this.state.searchResults));
   }
 
+  nominate(event) {
+    for (let i = 0; i < this.state.searchResults.length; i++) {
+      if (this.state.searchResults[i].imdbID === event.target.value) {
+        this.setState({
+          nominations: [...this.state.nominations, this.state.searchResults[i]],
+        });
+      }
+    }
+    console.log("Nominations", this.state.nominations);
+  }
+
   handleChange = (event) => {
     this.setState({ searchParam: event.target.value });
   };
@@ -46,7 +59,10 @@ export default class App extends Component {
           searchparam={this.state.searchParam}
           handleChange={this.handleChange}
         />
-        <SearchResults searchResults={this.state.searchResults} />
+        <SearchResults
+          searchResults={this.state.searchResults}
+          nominate={this.nominate}
+        />
       </div>
     );
   }
