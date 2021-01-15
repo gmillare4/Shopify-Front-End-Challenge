@@ -10,29 +10,26 @@ export default class App extends Component {
       searchParam: "",
       searchResults: [],
       nominations: [],
+      banner: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
     this.nominate = this.nominate.bind(this);
     this.remove = this.remove.bind(this);
   }
-  //http://www.omdbapi.com/?i=tt3896198&apikey=807abc94
-  //http://www.omdbapi.com/?apikey=807abc94
-  componentDidMount() {
-    fetch("http://www.omdbapi.com/?i=tt3896198&apikey=807abc94")
-      .then((res) => res.json())
-      .then((data) => console.log("Data", data));
-  }
 
   search(event) {
     event.preventDefault();
-    console.log("Search Parameter", this.state.searchParam);
     fetch(
       `http://www.omdbapi.com/?s=${this.state.searchParam}&page=1&apikey=807abc94`
     )
       .then((res) => res.json())
       .then((data) => this.setState({ searchResults: data.Search }));
   }
+
+  handleChange = (event) => {
+    this.setState({ searchParam: event.target.value });
+  };
 
   nominate(event) {
     let canNominate = true;
@@ -67,13 +64,24 @@ export default class App extends Component {
     });
   }
 
-  handleChange = (event) => {
-    this.setState({ searchParam: event.target.value });
-  };
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.nominations !== prevState.nominations) {
+      if (this.state.nominations.length === 5) {
+        this.setState({ banner: true });
+      } else {
+        this.setState({ banner: false });
+      }
+    }
+  }
 
   render() {
+    let banner;
+    if (this.state.banner) {
+      banner = <h4>Banner</h4>;
+    }
     return (
       <div className="App">
+        {banner}
         <h1>The Shoppies</h1>
         <Nominations
           nominations={this.state.nominations}
@@ -92,12 +100,3 @@ export default class App extends Component {
     );
   }
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <h1>Hello World</h1>
-//     </div>
-//   );
-// }
-// export default App;
