@@ -18,10 +18,16 @@ const SearchResults = (props) => {
           {props.searchResults.map((result, index) => {
             return (
               <li key={index}>
-                {result.Title} ({result.Year}) {}
-                <button value={result.imdbID} onClick={props.nominate}>
+                {result.Title} ({result.Year}){" "}
+                <Button
+                  outline
+                  color="success"
+                  size="sm"
+                  value={result.imdbID}
+                  onClick={props.nominate}
+                >
                   Nominate
-                </button>
+                </Button>
               </li>
             );
           })}

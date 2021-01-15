@@ -18,10 +18,16 @@ const Nominations = (props) => {
           {props.nominations.map((result, index) => {
             return (
               <li key={index}>
-                {result.Title} ({result.Year}) {}
-                <button value={result.imdbID} onClick={props.remove}>
+                {result.Title} ({result.Year}){" "}
+                <Button
+                  outline
+                  color="danger"
+                  size="sm"
+                  value={result.imdbID}
+                  onClick={props.remove}
+                >
                   Remove
-                </button>
+                </Button>
               </li>
             );
           })}
