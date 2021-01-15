@@ -8,7 +8,7 @@ const Nominations = (props) => {
         {props.nominations.map((result, index) => {
           return (
             <li key={index}>
-              {result.Title}, {result.Year}
+              {result.Title} ({result.Year}) {}
               <button value={result.imdbID} onClick={props.remove}>
                 Remove
               </button>

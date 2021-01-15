@@ -11,6 +11,7 @@ export default class App extends Component {
       searchResults: [],
       nominations: [],
       banner: false,
+      resultsFor: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
@@ -25,6 +26,7 @@ export default class App extends Component {
     )
       .then((res) => res.json())
       .then((data) => this.setState({ searchResults: data.Search }));
+    this.setState({ resultsFor: this.state.searchParam });
   }
 
   handleChange = (event) => {
@@ -89,12 +91,13 @@ export default class App extends Component {
         />
         <SearchBar
           search={this.search}
-          searchparam={this.state.searchParam}
+          searchParam={this.state.searchParam}
           handleChange={this.handleChange}
         />
         <SearchResults
           searchResults={this.state.searchResults}
           nominate={this.nominate}
+          resultsFor={this.state.resultsFor}
         />
       </div>
     );

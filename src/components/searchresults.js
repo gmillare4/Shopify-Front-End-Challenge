@@ -3,12 +3,12 @@ import React from "react";
 const SearchResults = (props) => {
   return (
     <div>
-      <h2>SearchResults</h2>
+      <h2>Results for "{props.resultsFor}"</h2>
       <ul>
         {props.searchResults.map((result, index) => {
           return (
             <li key={index}>
-              {result.Title}, {result.Year}
+              {result.Title} ({result.Year}) {}
               <button value={result.imdbID} onClick={props.nominate}>
                 Nominate
               </button>
