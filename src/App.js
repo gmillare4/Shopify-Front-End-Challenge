@@ -53,7 +53,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>The Shoppies</h1>
-        <Nominations />
+        <Nominations nominations={this.state.nominations} />
         <SearchBar
           search={this.search}
           searchparam={this.state.searchParam}
