@@ -26,7 +26,7 @@ export default class App extends Component {
       nominations: [],
       banner: false,
       resultsFor: "",
-      apiError: "",
+      apiError: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
@@ -48,11 +48,11 @@ export default class App extends Component {
       })
       .then((res) => {
         if (res.Response === "True") {
+          this.setState({ apiError: false });
           this.setState({ searchResults: res.Search });
-          console.log("res", res);
         } else {
           this.setState({ apiError: res.Error });
-          console.log(this.state.apiError);
+          this.setState({ searchResults: [] });
         }
       })
       .catch((err) => console.log("error", err));
@@ -126,6 +126,7 @@ export default class App extends Component {
           search={this.search}
           searchParam={this.state.searchParam}
           handleChange={this.handleChange}
+          apiError={this.state.apiError}
         />
         <CardGroup>
           <SearchResults
