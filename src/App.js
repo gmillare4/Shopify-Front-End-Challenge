@@ -2,20 +2,7 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 import "./App.css";
 import { Nominations, SearchBar, SearchResults } from "./components";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  Col,
-  Container,
-  Row,
-  CardDeck,
-  CardGroup,
-} from "reactstrap";
+import { CardGroup } from "reactstrap";
 
 export default class App extends Component {
   constructor() {
@@ -37,7 +24,7 @@ export default class App extends Component {
   search(event) {
     event.preventDefault();
     fetch(
-      `http://www.omdbapi.com/?s=${this.state.searchParam}&page=1&apikey=807abc94`
+      `https://www.omdbapi.com/?s=${this.state.searchParam}&apikey=807abc94`
     )
       .then((res) => {
         if (res.ok) {
