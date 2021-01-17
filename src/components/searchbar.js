@@ -36,7 +36,7 @@ const SearchBar = (props) => {
     <Card className="card shadow p-3 mb-5 bg-white rounded">
       <CardBody>
         <h5>Movie Title</h5>
-        <Form onSubmit={props.search}>
+        <Form onSubmit={(event) => props.search(event, 1)}>
           <FormGroup>
             {formInput}
             {errorMsg}

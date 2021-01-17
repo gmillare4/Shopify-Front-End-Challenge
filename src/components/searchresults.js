@@ -22,13 +22,15 @@ const SearchResults = (props) => {
       </div>
     );
   }
+
   let paginationArr = [];
   let paginationNum = Math.ceil(props.totalResults / 10);
-  for (let i = 1; i < paginationNum + 1; i++) {
-    paginationArr.push(i);
+  if (paginationNum !== 1) {
+    for (let i = 1; i < paginationNum + 1; i++) {
+      paginationArr.push(i);
+    }
   }
-  console.log("state props.totalResults", props.totalResults);
-  console.log("paginationNum", paginationNum);
+
   return (
     <Card className="card shadow p-3 mb-5 bg-white rounded">
       <CardBody>
@@ -52,11 +54,15 @@ const SearchResults = (props) => {
             );
           })}
           <Pagination>
-            {console.log("paginationArr", paginationArr)}
             {paginationArr.map((page) => {
               return (
                 <PaginationItem>
-                  <PaginationLink href="#">{page}</PaginationLink>
+                  <PaginationLink
+                    onClick={(event) => props.search(event, page)}
+                    href="#"
+                  >
+                    {page}
+                  </PaginationLink>
                 </PaginationItem>
               );
             })}

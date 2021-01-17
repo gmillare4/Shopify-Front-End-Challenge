@@ -16,18 +16,24 @@ export default class App extends Component {
       apiError: false,
       loading: false,
       totalResults: 0,
+      currPage: 1,
     };
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
     this.nominate = this.nominate.bind(this);
     this.remove = this.remove.bind(this);
+    this.setPage = this.setPage.bind(this);
   }
 
-  search(event) {
+  componentDidMount() {
+    console.log("attempt 5");
+  }
+
+  search(event, page) {
     event.preventDefault();
     this.setState({ loading: true });
     fetch(
-      `https://www.omdbapi.com/?s=${this.state.searchParam}&page=1&apikey=807abc94`
+      `https://www.omdbapi.com/?s=${this.state.searchParam}&page=${page}&apikey=807abc94`
     )
       .then((res) => {
         if (res.ok) {
@@ -42,8 +48,6 @@ export default class App extends Component {
           this.setState({ loading: false });
           this.setState({ totalResults: Number(res.totalResults) });
           this.setState({ searchResults: res.Search });
-          console.log("res", res);
-          console.log("res.totalResults", Number(res.totalResults));
         } else {
           this.setState({ apiError: res.Error });
           this.setState({ loading: false });
@@ -92,6 +96,11 @@ export default class App extends Component {
     });
   }
 
+  setPage(pageNum) {
+    // this.setState({ currPage: pageNum });
+    console.log("setpage func on item");
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.nominations !== prevState.nominations) {
       if (this.state.nominations.length === 5) {
@@ -99,6 +108,9 @@ export default class App extends Component {
       } else {
         this.setState({ banner: false });
       }
+    }
+    if (this.state.currPage !== prevState.currPage) {
+      console.log("currPages", this.state.currPage);
     }
   }
 
@@ -130,6 +142,8 @@ export default class App extends Component {
             resultsFor={this.state.resultsFor}
             loading={this.state.loading}
             totalResults={this.state.totalResults}
+            setPage={this.setPage}
+            search={this.search}
           />
           <Nominations
             nominations={this.state.nominations}
