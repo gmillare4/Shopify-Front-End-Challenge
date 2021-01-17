@@ -22,12 +22,13 @@ The OMDb API is the open movie database used to fetch movie data.
 
 GitHub Pages is used to deploy this website.
 
-Functionality:
+Features:
 
 - You can search movie titles in the search bar which updates the results list
 - Movies in search results can be added and removed from the nominations list
-- If a search result has already been nominated, it's nomination button is disabled
+- If a search result has already been nominated, it's nomination button is greyed out and disabled
 - A banner is displayed when a user as 5 nominations
 - Error handling
 - An error message will be displayed on API error, EX: "Too many results."
 - Loading animation for search results
+- Pagination for search results
