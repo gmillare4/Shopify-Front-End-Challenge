@@ -24,10 +24,6 @@ export default class App extends Component {
     this.remove = this.remove.bind(this);
   }
 
-  componentDidMount() {
-    console.log("attempt 20");
-  }
-
   search(event, page) {
     event.preventDefault();
     this.setState({ loading: true });
@@ -104,9 +100,6 @@ export default class App extends Component {
         this.setState({ banner: false });
       }
     }
-    if (this.state.currPage !== prevState.currPage) {
-      console.log("currPages", this.state.currPage);
-    }
   }
 
   render() {
@@ -139,6 +132,7 @@ export default class App extends Component {
             totalResults={this.state.totalResults}
             search={this.search}
             currPage={this.state.currPage}
+            nominations={this.state.nominations}
           />
           <Nominations
             nominations={this.state.nominations}

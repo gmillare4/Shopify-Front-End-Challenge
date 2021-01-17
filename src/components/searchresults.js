@@ -42,15 +42,24 @@ const SearchResults = (props) => {
         {loadingAnim}
         <ul>
           {props.searchResults.map((result, index) => {
+            let disabled = false;
+            let color = "success";
+            props.nominations.map((nomination, i) => {
+              if (nomination.imdbID === result.imdbID) {
+                disabled = true;
+                color = "secondary";
+              }
+            });
             return (
               <li key={index}>
                 {result.Title} ({result.Year}){" "}
                 <Button
                   outline
-                  color="success"
+                  color={color}
                   size="sm"
                   value={result.imdbID}
                   onClick={props.nominate}
+                  disabled={disabled}
                 >
                   Nominate
                 </Button>
