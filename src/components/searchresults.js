@@ -56,7 +56,7 @@ const SearchResults = (props) => {
           <Pagination>
             {paginationArr.map((page) => {
               return (
-                <PaginationItem>
+                <PaginationItem active={page === props.currPage}>
                   <PaginationLink
                     onClick={(event) => props.search(event, page)}
                     href="#"

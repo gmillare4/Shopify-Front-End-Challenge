@@ -26,7 +26,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    console.log("attempt 5");
+    console.log("attempt 1");
   }
 
   search(event, page) {
@@ -48,6 +48,7 @@ export default class App extends Component {
           this.setState({ loading: false });
           this.setState({ totalResults: Number(res.totalResults) });
           this.setState({ searchResults: res.Search });
+          this.setState({ currPage: page });
         } else {
           this.setState({ apiError: res.Error });
           this.setState({ loading: false });
@@ -144,6 +145,7 @@ export default class App extends Component {
             totalResults={this.state.totalResults}
             setPage={this.setPage}
             search={this.search}
+            currPage={this.state.currPage}
           />
           <Nominations
             nominations={this.state.nominations}
