@@ -22,11 +22,10 @@ export default class App extends Component {
     this.search = this.search.bind(this);
     this.nominate = this.nominate.bind(this);
     this.remove = this.remove.bind(this);
-    this.setPage = this.setPage.bind(this);
   }
 
   componentDidMount() {
-    console.log("attempt 1");
+    console.log("attempt 20");
   }
 
   search(event, page) {
@@ -97,11 +96,6 @@ export default class App extends Component {
     });
   }
 
-  setPage(pageNum) {
-    // this.setState({ currPage: pageNum });
-    console.log("setpage func on item");
-  }
-
   componentDidUpdate(prevProps, prevState) {
     if (this.state.nominations !== prevState.nominations) {
       if (this.state.nominations.length === 5) {
@@ -143,7 +137,6 @@ export default class App extends Component {
             resultsFor={this.state.resultsFor}
             loading={this.state.loading}
             totalResults={this.state.totalResults}
-            setPage={this.setPage}
             search={this.search}
             currPage={this.state.currPage}
           />

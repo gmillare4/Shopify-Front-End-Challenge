@@ -7,6 +7,8 @@ import {
   Pagination,
   PaginationItem,
   PaginationLink,
+  Container,
+  Row,
 } from "reactstrap";
 
 const SearchResults = (props) => {
@@ -34,7 +36,9 @@ const SearchResults = (props) => {
   return (
     <Card className="card shadow p-3 mb-5 bg-white rounded">
       <CardBody>
-        <h5>Results for "{props.resultsFor}"</h5>
+        <h5>
+          {props.totalResults} results for "{props.resultsFor}"
+        </h5>
         {loadingAnim}
         <ul>
           {props.searchResults.map((result, index) => {
@@ -54,18 +58,22 @@ const SearchResults = (props) => {
             );
           })}
           <Pagination>
-            {paginationArr.map((page) => {
-              return (
-                <PaginationItem active={page === props.currPage}>
-                  <PaginationLink
-                    onClick={(event) => props.search(event, page)}
-                    href="#"
-                  >
-                    {page}
-                  </PaginationLink>
-                </PaginationItem>
-              );
-            })}
+            <Container>
+              <Row xs="10">
+                {paginationArr.map((page) => {
+                  return (
+                    <PaginationItem active={page === props.currPage}>
+                      <PaginationLink
+                        onClick={(event) => props.search(event, page)}
+                        href="#"
+                      >
+                        {page}
+                      </PaginationLink>
+                    </PaginationItem>
+                  );
+                })}
+              </Row>
+            </Container>
           </Pagination>
         </ul>
       </CardBody>
