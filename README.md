@@ -14,8 +14,17 @@ Reactstrap is used to easily implement aesthetic components in React.
 
 ![OMDb API](https://mherman.org/microservice-movies/images/omdb.png)
 
-The OMDb API is the open movie database used to fetch movie data from.
+The OMDb API is the open movie database used to fetch movie data.
 
 ![GitHub Pages](https://i.ytimg.com/vi/2MsN8gpT6jY/maxresdefault.jpg)
 
 GitHub Pages is used to deploy this website.
+
+Functionality:
+
+- You can search movie titles in the search bar which updates the results list
+- Movies in search results can be added and removed to the nominations list
+- If a search result has already been nominated, it's nomination button is disabled
+- A banner is displayed when a user as 5 nominations
+- Error handling
+- An error message will be displayed on API error, EX: "Too many results."
