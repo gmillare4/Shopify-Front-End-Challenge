@@ -2,7 +2,7 @@ The deployed website: https://gmillare4.github.io/The-Shoppies/
 
 ![The Shoppies](public/theShoppies.PNG)
 
-The Shoppies is a webiste that allows you to search OMDB for movies and allows you to nominate your favorite ones.
+The Shoppies is a website that allows you to search OMDB for movies and allows you to nominate your favorite ones.
 
 The Shoppies is made using:
 
