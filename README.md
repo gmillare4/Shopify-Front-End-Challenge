@@ -1,10 +1,10 @@
-The deployed website: https://gmillare4.github.io/The-Shoppies/
+The deployed website: https://gmillare4.github.io/The-Nominees/
 
-![The Shoppies](public/theShoppies.PNG)
+![The Nominees](public/theNominees.PNG)
 
-The Shoppies is a website that allows you to search OMDB for movies and allows you to nominate your favorite ones.
+The Nominees is a website that allows you to search OMDB for movies and allows you to nominate your favorite ones.
 
-The Shoppies is made using:
+The Nominees is made using:
 
 ![React Logo](https://miro.medium.com/max/3600/1*HSisLuifMO6KbLfPOKtLow.jpeg)
 
