@@ -116,7 +116,7 @@ export default class App extends Component {
     return (
       <div className="App">
         {banner}
-        <h1 className="center">The Shoppies</h1>
+        <h1 className="center">The Nominees</h1>
         <SearchBar
           search={this.search}
           searchParam={this.state.searchParam}
